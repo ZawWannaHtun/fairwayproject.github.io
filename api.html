@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Catagory Client</h1>
+    <ul></ul>
+    <script>
+        const api = "http://localhost:8000/api";
+
+        fetch(`${api}/categories`)
+            .then(res => res.json())
+            .then(json =>{
+                json.map(category => {
+                    let li = document.createElement("li");
+                    li.textContent = category.name;
+                    document.querySelector("ul").appendChild(li);
+                });
+            })
+            .catch(() => console.log("Error Fetching Data"));
+    </script>
+</body>
+</html>
